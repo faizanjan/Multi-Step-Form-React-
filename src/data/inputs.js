@@ -12,7 +12,7 @@ const inputs = [
     labelName: "Email Address",
   },
   {
-    id: "name",
+    id: "number",
     type: "tel",
     placeholder: "e.g. +1 234 567 890",
     labelName: "Phone Number",
