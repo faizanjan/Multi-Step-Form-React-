@@ -18,7 +18,7 @@ let Plan = ({id, imgSrc, monthlyPrice, checked})=>{
             alt={id}
           />
           <span className="plan-details">
-            <p className="plan text-dark fw-bold">{id}</p>
+            <p className="plan text-dark fw-bold" style={{textTransform:'Capitalize'}}>{id}</p>
             <p className="price text-muted">${monthlyPrice}/mo</p>
             <p className="two-months-free">2 months free</p>
           </span>
