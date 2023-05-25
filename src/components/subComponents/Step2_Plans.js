@@ -1,4 +1,4 @@
-let Plan = ({id, imgSrc, monthlyPrice, checked})=>{
+let Plan = ({id, imgSrc, monthlyPrice, monthly, checked})=>{
     return <>
         <input
           type="radio"
@@ -19,8 +19,8 @@ let Plan = ({id, imgSrc, monthlyPrice, checked})=>{
           />
           <span className="plan-details">
             <p className="plan text-dark fw-bold" style={{textTransform:'Capitalize'}}>{id}</p>
-            <p className="price text-muted">${monthlyPrice}/mo</p>
-            <p className="two-months-free">2 months free</p>
+            <p className="price text-muted">${monthly? monthlyPrice+'/mo': monthlyPrice*10+'/yr' }</p>
+            {!monthly && <p className="two-months-free">2 months free</p>}
           </span>
         </label>
     </>

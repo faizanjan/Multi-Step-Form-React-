@@ -1,8 +1,9 @@
 import Plan from "./subComponents/Step2_Plans";
 import plans from "../data/plans" 
 
-let Step2 = () => {
+let Step2 = ({monthly, switchMonthly}) => {
   
+  let classesForMonthlyAndYearly = "form-check-label mx-2 mx-sm-3 mx-lg-5";
   return (
     <form
       className="px-3 py-4 p-sm-5 mx-auto d-flex flex-column bg-light rounded-4"
@@ -23,21 +24,23 @@ let Step2 = () => {
             id={plan.id}
             imgSrc={plan.img}
             monthlyPrice={plan.monthlyPrice}
+            monthly={monthly}
             checked={plan.checked}
           />
         ))}
       </div>
 
       <div className="form-check form-switch d-flex flex-row justify-content-center align-items-center my-5 py-4">
-        <span className="form-check-label fw-bold mx-2 mx-sm-3 mx-lg-5">
+        <span className={monthly? classesForMonthlyAndYearly+ " fw-bold" : classesForMonthlyAndYearly}>
           Monthly
         </span>
         <input
           className="form-check-input mx-2 mx-sm-3 mx-lg-5"
           type="checkbox"
           id="flexSwitchCheckDefault"
+          onClick={()=>{switchMonthly(!monthly)}}
         />
-        <span className="form-check-label mx-2 mx-sm-3 mx-lg-5"> Yearly</span>
+        <span className={!monthly? classesForMonthlyAndYearly+ " fw-bold" : classesForMonthlyAndYearly}> Yearly</span>
       </div>
     </form>
   );
