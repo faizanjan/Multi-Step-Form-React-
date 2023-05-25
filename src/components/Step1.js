@@ -1,7 +1,7 @@
 import Input from "./subComponents/Step1_Inputs";
 import inputs from "../data/inputs.js";
 
-let Step1 = () => {
+let Step1 = ({handlePersonalInfo}) => {
 
   return (
     <>
@@ -21,6 +21,7 @@ let Step1 = () => {
             type={element.type}
             placeholder={element.placeholder}
             labelName={element.labelName}
+            handlePersonalInfo={handlePersonalInfo}
           />
         ))}
       </form>

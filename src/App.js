@@ -10,13 +10,21 @@ import { Routes, Route, Link } from "react-router-dom";
 function App() {
   let paths = ["/", "/plans", "/add-ons", "/summary", "/thanks"];
   let [step, setStep] = useState(0);
+  let [personalInfo, setPersonalInfo] = useState({name:"", email:"", number:""});
+
+  let handlePersonalInfo = (key, value)=>{
+    setPersonalInfo({
+      ...personalInfo,
+      [key]:value
+    })
+  }
 
   return (
     <div className="App my-container d-flex flex-column flex-lg-row bg-light border border-light rounded-3 h-75 p-lg-3">
       <Aside step={step}/>
 
       <Routes>
-        <Route element={<Step1 />} path="/" />
+        <Route element={<Step1 handlePersonalInfo={handlePersonalInfo}/>} path="/" />
         <Route element={<Step2 />} path="/plans" />
         <Route element={<Step3 />} path="/add-ons" />
         <Route element={<Step4 />} path="/summary" />
