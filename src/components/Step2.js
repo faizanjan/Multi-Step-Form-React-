@@ -1,7 +1,7 @@
 import Plan from "./subComponents/Step2_Plans";
 import plans from "../data/plans" 
 
-let Step2 = ({monthly, switchMonthly}) => {
+let Step2 = ({monthly, switchMonthly, setPlan}) => {
   
   let classesForMonthlyAndYearly = "form-check-label mx-2 mx-sm-3 mx-lg-5";
   return (
@@ -21,11 +21,13 @@ let Step2 = ({monthly, switchMonthly}) => {
         {plans.map((plan, index) => (
           <Plan
             key={index}
+            serial={index}
             id={plan.id}
             imgSrc={plan.img}
             monthlyPrice={plan.monthlyPrice}
             monthly={monthly}
             checked={plan.checked}
+            setPlan={setPlan}
           />
         ))}
       </div>

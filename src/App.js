@@ -1,14 +1,19 @@
-import { useState } from "react";
 import Aside from "./components/Aside";
 import Step1 from "./components/Step1";
 import Step2 from "./components/Step2";
 import Step3 from "./components/Step3";
 import Step4 from "./components/Step4";
 import Step5 from "./components/Step5";
+
+import plans from './data/plans.js'
+
+import { useState } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 
 function App() {
+
   let paths = ["/", "/plans", "/add-ons", "/summary", "/thanks"];
+
   let [step, setStep] = useState(0);
   let [personalInfo, setPersonalInfo] = useState({
     name: "",
@@ -16,6 +21,7 @@ function App() {
     number: "",
   });
   let [monthly, switchMonthly] = useState(true);
+  let [activePlan, setActivePlan] = useState(plans[0]);
 
   let handlePersonalInfo = (key, value) => {
     setPersonalInfo({
@@ -23,6 +29,10 @@ function App() {
       [key]: value,
     });
   };
+
+  let setPlan = (index)=>{
+    setActivePlan(plans[index]);
+  }
 
   return (
     <div className="App my-container d-flex flex-column flex-lg-row bg-light border border-light rounded-3 h-75 p-lg-3">
@@ -34,7 +44,7 @@ function App() {
           path="/"
         />
         <Route
-          element={<Step2 monthly={monthly} switchMonthly={switchMonthly} />}
+          element={<Step2 monthly={monthly} switchMonthly={switchMonthly} setPlan={setPlan}/>}
           path="/plans"
         />
         <Route element={<Step3 />} path="/add-ons" />
