@@ -5,7 +5,7 @@
   transition: all 0.3s;
 }
 
-body {
+#root {
   background-color: rgba(213, 238, 238, 0.499);
   width: 100vw;
   height: 100vh;
@@ -144,7 +144,7 @@ input[type="checkbox"] {
     height: 240px;
   }
 
-  body{
+  #root{
     height: unset;
     width: unset;
   }
