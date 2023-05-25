@@ -1,13 +1,217 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  transition: all 0.3s;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  background-color: rgba(213, 238, 238, 0.499);
+  width: 100vw;
+  height: 100vh;
+}
+
+.my-container {
+  box-shadow: 10px 20px 30px rgba(173, 216, 230, 0.5);
+  width: 70%;
+  /* height: 90%; */
+  position: relative;
+}
+
+@media screen and (max-width: 1250px) {
+  .my-container {
+    width: 100%;
+    height: 90%;
+  }
+}
+
+aside {
+  background-image: url(../assets/images/bg-sidebar-desktop.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 27%;
+}
+
+form {
+  width: 70% !important;
+  position: relative;
+  height: 100%;
+}
+
+aside ol {
+  list-style: none;
+}
+
+.step::before {
+  content: attr(step);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  background: none;
+  border: 1px solid white;
+  width: 2rem;
+  height: 2rem;
+  color: white;
+  border-radius: 50%;
+  margin-right: 15px;
+  font-size: 0.7rem;
+  align-self: center;
+}
+
+.active-step::before {
+  background-color: rgb(196, 219, 238);
+  color: black;
+}
+
+.price {
+  font-size: 0.7rem;
+}
+
+#plans-options label {
+  width: 30% !important;
+}
+
+#plans-options label img {
+  width: 25% !important;
+}
+
+input:checked + .plan-label,
+input:focus {
+  background-color: rgba(213, 238, 238, 0.499);
+  border: 1px solid slateblue !important;
+}
+
+input + .plan-label:hover {
+  border: 1px solid slateblue !important;
+}
+
+.form-check {
+  background-color: rgba(213, 238, 238, 0.499);
+}
+
+.two-months-free{
+  font-size: 0.8rem;
+  display: none;
+}
+
+/* Page 3 */
+
+input[type="checkbox"] {
+  width: 1.5rem;
+  accent-color: #0d0b35;
+}
+
+.add-ons-label {
+  width: 90%;
+}
+
+.add-ons-price {
+  color: slateblue;
+}
+
+.add-on:has(> input[type="checkbox"]:checked) {
+  background-color: rgba(213, 238, 238, 0.499);
+  border: 1px solid slateblue !important;
+}
+
+.add-on:hover {
+  border: 1px solid slateblue !important;
+}
+
+.next-btn {
+  position: absolute;
+  bottom: 2rem;
+  right: 4rem;
+}
+
+.prev-btn {
+  position: absolute;
+  bottom: 2rem;
+  left: calc(27% + 5rem);
+}
+
+/* Summary */
+
+#summary {
+  background-color: rgba(213, 238, 238, 0.499);
+}
+
+@media screen and (max-width: 991px) {
+  aside {
+    background-image: url(../assets/images/bg-sidebar-mobile.svg);
+    width: 100%;
+    height: 240px;
+  }
+
+  body{
+    height: unset;
+    width: unset;
+  }
+  .my-container {
+    min-height: 100vh !important;
+    background: rgba(213, 238, 238, 0.499) !important;
+    width: 100vw !important;
+  }
+
+  .step::before {
+    margin-right: 0px;
+    align-self: flex-start;
+  }
+
+  form {
+    width: 90%;
+    top: -100px;
+  }
+
+  #name, #email, #phone-number{
+    width: 100% !important;
+  }
+
+  .next-btn {
+    right: 5rem;
+  }
+
+  .prev-btn {
+    left: 5rem;
+  }
+
+  #plans-options label {
+    width: 100% !important;
+    justify-content: flex-start !important;
+  }
+
+  #plans-options label img {
+    height: 50px !important;
+    margin-right: 20px !important;
+  }
+}
+
+@media screen and (max-width:576px) {
+  form{
+    width: 98% !important;
+  }
+
+  input[type="checkbox"] {
+    width: 1rem;
+    accent-color: #0d0b35;
+  }
+
+  .add-ons-details .fs-5{
+    font-size: 1rem !important;
+  }
+
+  .next-btn {
+    right: 1rem;
+  }
+
+  .prev-btn {
+    left: 1rem;
+  }
+}
+
+/* For DOM manipulation */
+
+.text-danger{
+  display: none;
 }
