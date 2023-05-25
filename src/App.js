@@ -66,8 +66,20 @@ function App() {
           }
           path="/plans"
         />
-        <Route element={<Step3 modifyAddOns={modifyAddOns}/>} path="/add-ons" />
-        <Route element={<Step4 />} path="/summary" />
+        <Route
+          element={<Step3 monthly={monthly} modifyAddOns={modifyAddOns} />}
+          path="/add-ons"
+        />
+        <Route
+          element={
+            <Step4
+              monthly={monthly}
+              activePlan={activePlan}
+              addOnsList={addOnsList}
+            />
+          }
+          path="/summary"
+        />
         <Route element={<Step5 />} path="/thanks" />
       </Routes>
 
@@ -91,7 +103,7 @@ function App() {
           }}
           className="btn btn-rounded btn-dark next-btn p-2 px-4"
         >
-          {step===3? "Confirm":"Next Step"}
+          {step === 3 ? "Confirm" : "Next Step"}
         </Link>
       )}
     </div>

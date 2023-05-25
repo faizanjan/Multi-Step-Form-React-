@@ -1,4 +1,17 @@
-let Step4 = () => {
+import { Link } from "react-router-dom";
+import { useState } from "react";
+
+let Step4 = ({ monthly, activePlan, addOnsList }) => {
+  let monthlyTotal = useState(
+    activePlan.monthlyPrice +
+      addOnsList.reduce((acc, addOn) => {
+        if (addOn.checked) {
+          acc += addOn.monthlyPrice;
+        }
+        return acc;
+      }, 0)
+  );
+
   return (
     <form
       className="px-3 py-4 p-sm-5 mx-auto d-flex flex-column bg-light rounded-4"
@@ -15,15 +28,51 @@ let Step4 = () => {
           className="d-flex flex-row justify-content-between align-items-center pe-3 mt-2 mb-3"
         >
           <div id="plan-details">
-            <h5 id="plan-name" className="fw-bold mb-2"></h5>
-            <a href="plan.html" className="text-muted">
+            <h5
+              id="plan-name"
+              className="fw-bold mb-2"
+              style={{ textTransform: "Capitalize" }}
+            >
+              {activePlan.id} ({monthly ? "Monthly" : "Yearly"})
+            </h5>
+            <Link
+              to="/plans"
+              onClick={() => {
+                setStep(1);
+              }}
+              className="text-muted"
+            >
               Change
-            </a>
+            </Link>
           </div>
-          <span id="plan-price" className="fw-bold"></span>
+          <span id="plan-price" className="fw-bold">
+            $
+            {monthly
+              ? activePlan.monthlyPrice + "/mo"
+              : activePlan.monthlyPrice * 10 + "/yr"}
+          </span>
         </div>
         <hr />
-        <div id="add-ons-summary" className="mt-3"></div>
+        <div id="add-ons-summary" className="mt-3">
+          {addOnsList.map((addOn, key) => {
+            if (addOn.checked) {
+              return (
+                <div
+                  key={key}
+                  className="add-on-sum d-flex flex-row justify-content-between align-items-center pe-3 mt-2 mb-3 "
+                >
+                  <p className="add-on-name text-muted">{addOn.addOnName}</p>
+                  <p className="add-on-price">
+                    +$
+                    {monthly
+                      ? addOn.monthlyPrice + "/mo"
+                      : addOn.monthlyPrice * 10 + "/yr"}
+                  </p>
+                </div>
+              );
+            }
+          })}
+        </div>
       </div>
 
       <div
@@ -31,7 +80,9 @@ let Step4 = () => {
         className="my-4 w-100 m-auto d-flex flex-row justify-content-between px-3"
       >
         <p id="total"></p>
-        <h4 id="total-summary-price"></h4>
+        <h4 id="total-summary-price">
+          ${monthly ? monthlyTotal[0] + "/mo" : monthlyTotal[0] * 10 + "/yr"}
+        </h4>
       </div>
     </form>
   );
