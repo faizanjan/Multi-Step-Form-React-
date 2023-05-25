@@ -1,26 +1,7 @@
 import Input from "./subComponents/Step1_Inputs";
+import inputs from "../data/inputs.js";
 
 let Step1 = () => {
-  const inputs = [
-    {
-      id: "name",
-      type: "text",
-      placeholder: "e.g. Stephen King",
-      labelName: "Name",
-    },
-    {
-      id: "email",
-      type: "email",
-      placeholder: "e.g. stephenking@lorem.com",
-      labelName: "Email Address",
-    },
-    {
-      id: "name",
-      type: "tel",
-      placeholder: "e.g. +1 234 567 890",
-      labelName: "Phone Number",
-    },
-  ];
 
   return (
     <>
