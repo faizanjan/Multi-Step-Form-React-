@@ -1,4 +1,27 @@
+import Input from "./Step1_Inputs";
+
 let Step1 = () => {
+  const inputs = [
+    {
+      id: "name",
+      type: "text",
+      placeholder: "e.g. Stephen King",
+      labelName: "Name",
+    },
+    {
+      id: "email",
+      type: "email",
+      placeholder: "e.g. stephenking@lorem.com",
+      labelName: "Email Address",
+    },
+    {
+      id: "name",
+      type: "tel",
+      placeholder: "e.g. +1 234 567 890",
+      labelName: "Phone Number",
+    },
+  ];
+
   return (
     <>
       <form
@@ -10,53 +33,14 @@ let Step1 = () => {
           Please provide your name, email address, and phone number
         </p>
 
-        <label
-          id="label-for-name"
-          className="text-dark mt-3 mb-1 d-flex flex-row justify-content-between"
-          htmlFor="name"
-        >
-          <span>Name</span>
-          <span className="field-required text-danger">This field is required</span>
-        </label>
-        <input
-          className="p-2 w-75 border rounded-2"
-          type="text"
-          id="name"
-          placeholder="e.g. Stephen King"
-          required
-        />
-
-        <label
-          id="label-for-email"
-          className="text-dark mt-3 mb-1 d-flex flex-row justify-content-between"
-          htmlFor="email"
-        >
-          <span>Email Address</span>
-          <span className="field-required text-danger">This field is required</span>
-        </label>
-        <input
-          className="p-2 w-75 border rounded-2"
-          type="email"
-          id="email"
-          placeholder="e.g. stephenking@lorem.com"
-          required
-        />
-
-        <label
-          id="label-for-number"
-          className="text-dark mt-3 mb-1 d-flex flex-row justify-content-between"
-          htmlFor="phone-number"
-        >
-          <span>Phone Number</span>
-          <span className="field-required text-danger">This field is required</span>
-        </label>
-        <input
-          className="p-2 w-75 border rounded-2"
-          type="number"
-          id="phone-number"
-          placeholder="e.g. +1 234 567 890"
-          required
-        />
+        {inputs.map((element) => (
+          <Input
+            id={element.id}
+            type={element.type}
+            placeholder={element.placeholder}
+            labelName={element.labelName}
+          />
+        ))}
       </form>
     </>
   );
