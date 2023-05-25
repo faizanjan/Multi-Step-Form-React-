@@ -1,4 +1,4 @@
-import Input from "./Step1_Inputs";
+import Input from "./subComponents/Step1_Inputs";
 
 let Step1 = () => {
   const inputs = [

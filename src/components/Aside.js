@@ -1,4 +1,4 @@
-import AsideItem from "./AsideItem";
+import AsideItem from "./subComponents/AsideItem";
 
 let Aside = ({ step }) => {
   let steps = ["YOUR INFO", "SELECT PLAN", "ADD-ONS", "SUMMARY"];

@@ -1,4 +1,4 @@
-import AddOn from "./Step3_AddOns";
+import AddOn from "./subComponents/Step3_AddOns";
 import addOns from "../data/addOns";
 
 let Step3 = () => {

@@ -1,4 +1,4 @@
-import Plan from "./Step2_Plans";
+import Plan from "./subComponents/Step2_Plans";
 import plans from "../data/plans" 
 
 let Step2 = () => {
