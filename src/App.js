@@ -91,7 +91,7 @@ function App() {
           }}
           className="btn btn-rounded btn-dark next-btn p-2 px-4"
         >
-          Next Step
+          {step===3? "Confirm":"Next Step"}
         </Link>
       )}
     </div>
