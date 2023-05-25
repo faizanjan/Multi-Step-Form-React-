@@ -33,8 +33,9 @@ let Step1 = () => {
           Please provide your name, email address, and phone number
         </p>
 
-        {inputs.map((element) => (
+        {inputs.map((element, index) => (
           <Input
+            key={index}
             id={element.id}
             type={element.type}
             placeholder={element.placeholder}

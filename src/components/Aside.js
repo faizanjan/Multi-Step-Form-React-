@@ -6,7 +6,14 @@ let Aside = ({ step }) => {
     <aside className="d-flex rounded-lg-3 m-lg-3 pt-lg-5 px-lg-4 h-lg-100">
       <ol className="d-flex flex-row flex-lg-column mx-auto mx-lg-0">
         {steps.map((title, index) => {
-          return <AsideItem title={title} itemStep={index} isActive={step===index} />;
+          return (
+            <AsideItem
+              key={index}
+              title={title}
+              itemStep={index}
+              isActive={step === index}
+            />
+          );
         })}
       </ol>
     </aside>
