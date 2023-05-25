@@ -8,13 +8,12 @@ import Step5 from "./components/Step5";
 import plans from "./data/plans.js";
 import addOns from "./data/addOns.js";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 
 function App() {
   let paths = ["/", "/plans", "/add-ons", "/summary", "/thanks"];
 
-  let [step, setStep] = useState(0);
   let [personalInfo, setPersonalInfo] = useState({
     name: "",
     email: "",
@@ -23,6 +22,12 @@ function App() {
   let [monthly, switchMonthly] = useState(true);
   let [activePlan, setActivePlan] = useState(plans[0]);
   let [addOnsList, setAddOnsList] = useState(addOns);
+ 
+  const lastStep = parseInt(localStorage.getItem("step")) || 0;
+  let [step, setStep] = useState(lastStep);
+  useEffect(() => {
+    localStorage.setItem("step", step.toString());
+  }, [step]);
 
   let handlePersonalInfo = (key, value) => {
     setPersonalInfo({
