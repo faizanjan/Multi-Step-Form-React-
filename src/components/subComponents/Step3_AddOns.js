@@ -1,5 +1,5 @@
 let AddOn = (props) => {
-  let { id, addOnName, addOnDetail, monthlyPrice, checked, modifyAddOns } =
+  let { id, addOnName, addOnDetail, monthlyPrice, checked, modifyAddOns, monthly } =
     props;
 
   return (
@@ -19,7 +19,7 @@ let AddOn = (props) => {
           <p className="add-ons-name my-1 fs-5">{addOnName}</p>
           <p className="text-muted">{addOnDetail}</p>
         </div>
-        <span className="add-ons-price">+${monthlyPrice}/mo</span>
+        <span className="add-ons-price">+${monthly? monthlyPrice+'/mo': monthlyPrice*10+'/yr'}</span>
       </label>
     </div>
   );
