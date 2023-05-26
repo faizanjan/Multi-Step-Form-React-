@@ -1,4 +1,11 @@
-let Step5 = () => {
+import {useEffect} from 'react';
+
+let Step5 = ({setStep}) => {
+  
+  useEffect(()=>{
+    setStep(4);
+  },[])
+
   return (
     <div
       id="thankyou"
@@ -6,7 +13,7 @@ let Step5 = () => {
     >
       <img
         className="my-2"
-        src="../assets/images/icon-thank-you.svg"
+        src="https://multi-step-form-sepia-six.vercel.app/assets/images/icon-thank-you.svg"
         alt="Thanks"
       />
       <h1 className="my-3">Thank you!</h1>

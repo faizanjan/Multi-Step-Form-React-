@@ -113,11 +113,11 @@ function App() {
           }
           path="/summary"
         />
-        <Route element={<Step5 />} path="/thanks" setStep={setStep} />
+        <Route element={<Step5 setStep={setStep}/>} path="/thanks" />
       </Routes>
 
           {/*********** Navigation Buttons ************/}
-      {step > 0 && (
+      {step > 0 && step< 4 && (
         <Link
           to={paths[step - 1]}
           className="btn btn-rounded btn-outline-dark prev-btn p-2 px-4"
