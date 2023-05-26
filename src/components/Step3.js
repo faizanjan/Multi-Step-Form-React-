@@ -1,7 +1,6 @@
 import AddOn from "./subComponents/Step3_AddOns";
-import addOns from "../data/addOns";
 
-let Step3 = ({monthly, modifyAddOns}) => {
+let Step3 = ({monthly, modifyAddOns, addOnsList}) => {
   return (
     <form
       className="px-3 py-4 p-sm-5 mx-auto d-flex flex-column bg-light rounded-4"
@@ -12,7 +11,7 @@ let Step3 = ({monthly, modifyAddOns}) => {
         Add-ons help enhance your gaming experience
       </p>
 
-      {addOns.map((addOn, index) => (
+      {addOnsList.map((addOn, index) => (
         <AddOn
           key={index}
           id={addOn.id}

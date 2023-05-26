@@ -19,15 +19,29 @@ function App() {
     email: "",
     number: "",
   });
-  let [monthly, switchMonthly] = useState(true);
-  let [activePlan, setActivePlan] = useState(plans[0]);
-  let [addOnsList, setAddOnsList] = useState(addOns);
- 
+
+  let lastMonthly = JSON.parse(sessionStorage.getItem("monthly"));
+  let [monthly, switchMonthly] = useState(
+    lastMonthly === undefined ? true : lastMonthly
+  );
+
+  let lastActivePlan =
+    JSON.parse(sessionStorage.getItem("activePlan")) || plans[0];
+  let [activePlan, setActivePlan] = useState(lastActivePlan);
+
+  let lastAddOnsList =
+    JSON.parse(sessionStorage.getItem("addOnsList")) || addOns;
+  let [addOnsList, setAddOnsList] = useState(lastAddOnsList);
+
   const lastStep = parseInt(sessionStorage.getItem("step")) || 0;
   let [step, setStep] = useState(lastStep);
+
   useEffect(() => {
     sessionStorage.setItem("step", step.toString());
-  }, [step]);
+    sessionStorage.setItem("monthly", monthly.toString());
+    sessionStorage.setItem("activePlan", JSON.stringify(activePlan));
+    sessionStorage.setItem("addOnsList", JSON.stringify(addOnsList));
+  }, [monthly, step, activePlan, addOnsList]);
 
   let handlePersonalInfo = (key, value) => {
     setPersonalInfo({
@@ -67,12 +81,19 @@ function App() {
               monthly={monthly}
               switchMonthly={switchMonthly}
               setPlan={setPlan}
+              activePlan={activePlan}
             />
           }
           path="/plans"
         />
         <Route
-          element={<Step3 monthly={monthly} modifyAddOns={modifyAddOns} />}
+          element={
+            <Step3
+              monthly={monthly}
+              modifyAddOns={modifyAddOns}
+              addOnsList={addOnsList}
+            />
+          }
           path="/add-ons"
         />
         <Route
