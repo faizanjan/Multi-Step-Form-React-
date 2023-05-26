@@ -1,4 +1,4 @@
-let Input = ({id, type, placeholder, labelName, handlePersonalInfo})=>{
+let Input = ({id, type, value, placeholder, labelName, handlePersonalInfo})=>{
     return <>
     <label
           id={"label-for-"+id}
@@ -14,6 +14,7 @@ let Input = ({id, type, placeholder, labelName, handlePersonalInfo})=>{
           id={id}
           placeholder={placeholder}
           onChange={(event)=>{handlePersonalInfo(id, event.target.value)}}
+          value={value}
           required
         />
     </>

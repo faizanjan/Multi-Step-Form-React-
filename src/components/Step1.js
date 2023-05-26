@@ -2,7 +2,7 @@ import Input from "./subComponents/Step1_Inputs";
 import inputs from "../data/inputs.js";
 import { useEffect } from "react";
 
-let Step1 = ({handlePersonalInfo, setStep}) => {
+let Step1 = ({personalInfo, handlePersonalInfo, setStep}) => {
 
   useEffect(()=>{
     setStep(0);
@@ -23,6 +23,7 @@ let Step1 = ({handlePersonalInfo, setStep}) => {
           <Input
             key={index}
             id={element.id}
+            value={personalInfo[element.id]}
             type={element.type}
             placeholder={element.placeholder}
             labelName={element.labelName}
