@@ -23,10 +23,10 @@ function App() {
   let [activePlan, setActivePlan] = useState(plans[0]);
   let [addOnsList, setAddOnsList] = useState(addOns);
  
-  const lastStep = parseInt(localStorage.getItem("step")) || 0;
+  const lastStep = parseInt(sessionStorage.getItem("step")) || 0;
   let [step, setStep] = useState(lastStep);
   useEffect(() => {
-    localStorage.setItem("step", step.toString());
+    sessionStorage.setItem("step", step.toString());
   }, [step]);
 
   let handlePersonalInfo = (key, value) => {
