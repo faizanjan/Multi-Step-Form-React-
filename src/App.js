@@ -15,13 +15,7 @@ function App() {
   let paths = ["/", "/plans", "/add-ons", "/summary", "/thanks"];
 
   let lastPersonalInfo = JSON.parse(sessionStorage.getItem("personalInfo"));
-  let [personalInfo, setPersonalInfo] = useState(
-    lastPersonalInfo || {
-      name: "",
-      email: "",
-      number: "",
-    }
-  );
+  let [personalInfo, setPersonalInfo] = useState(lastPersonalInfo || null);
 
   let lastMonthly = JSON.parse(sessionStorage.getItem("monthly"));
   let [monthly, switchMonthly] = useState(
@@ -122,6 +116,7 @@ function App() {
         <Route element={<Step5 />} path="/thanks" setStep={setStep} />
       </Routes>
 
+          {/*********** Navigation Buttons ************/}
       {step > 0 && (
         <Link
           to={paths[step - 1]}
@@ -133,7 +128,7 @@ function App() {
 
       {step < 4 && (
         <Link
-          to={paths[step + 1]}
+          to={paths[step+1]}
           className="btn btn-rounded btn-dark next-btn p-2 px-4"
         >
           {step === 3 ? "Confirm" : "Next Step"}

@@ -1,4 +1,10 @@
+import { useState } from "react";
+
 let Input = ({id, type, value, placeholder, labelName, handlePersonalInfo})=>{
+    
+    let [firstFocus, setFirstFocus] = useState(false);
+    let classesForInput = "p-2 w-75 border rounded-2";
+
     return <>
     <label
           id={"label-for-"+id}
@@ -6,15 +12,20 @@ let Input = ({id, type, value, placeholder, labelName, handlePersonalInfo})=>{
           htmlFor={id}
         >
           <span>{labelName}</span>
-          <span className="field-required text-danger">This field is required</span>
+          <span 
+            className="field-required text-danger"
+            style={{display: `${(firstFocus && !value)? "inline": "none"}`}}
+            >
+              This field is required</span>
         </label>
         <input
-          className="p-2 w-75 border rounded-2"
+          className= {(firstFocus && !value)? classesForInput + " border-danger": classesForInput}
           type={type}
           id={id}
           placeholder={placeholder}
           onChange={(event)=>{handlePersonalInfo(id, event.target.value)}}
           value={value}
+          onFocus={()=>{setFirstFocus(true)}}
           required
         />
     </>

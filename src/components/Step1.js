@@ -23,7 +23,7 @@ let Step1 = ({personalInfo, handlePersonalInfo, setStep}) => {
           <Input
             key={index}
             id={element.id}
-            value={personalInfo[element.id]}
+            value={personalInfo? personalInfo[element.id]:""}
             type={element.type}
             placeholder={element.placeholder}
             labelName={element.labelName}
