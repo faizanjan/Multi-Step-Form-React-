@@ -14,7 +14,8 @@ import { Routes, Route, Link } from "react-router-dom";
 function App() {
   let paths = ["/", "/plans", "/add-ons", "/summary", "/thanks"];
 
-  let [personalInfo, setPersonalInfo] = useState({
+  let lastPersonalInfo = JSON.parse(sessionStorage.getItem("personalInfo"));
+  let [personalInfo, setPersonalInfo] = useState(lastPersonalInfo || {
     name: "",
     email: "",
     number: "",
@@ -22,7 +23,7 @@ function App() {
 
   let lastMonthly = JSON.parse(sessionStorage.getItem("monthly"));
   let [monthly, switchMonthly] = useState(
-    lastMonthly === undefined ? true : lastMonthly
+    lastMonthly === null ? true : lastMonthly
   );
 
   let lastActivePlan =
@@ -37,11 +38,12 @@ function App() {
   let [step, setStep] = useState(lastStep);
 
   useEffect(() => {
-    sessionStorage.setItem("step", step.toString());
-    sessionStorage.setItem("monthly", monthly.toString());
+    sessionStorage.setItem("personalInfo", JSON.stringify(personalInfo));
+    sessionStorage.setItem("step", JSON.stringify(step));
+    sessionStorage.setItem("monthly", JSON.stringify(monthly));
     sessionStorage.setItem("activePlan", JSON.stringify(activePlan));
     sessionStorage.setItem("addOnsList", JSON.stringify(addOnsList));
-  }, [monthly, step, activePlan, addOnsList]);
+  }, [monthly, step, activePlan, addOnsList, personalInfo]);
 
   let handlePersonalInfo = (key, value) => {
     setPersonalInfo({
@@ -115,9 +117,6 @@ function App() {
       {step > 0 && (
         <Link
           to={paths[step-1]}
-          // onClick={() => {
-          //   setStep(step - 1);
-          // }}
           className="btn btn-rounded btn-outline-dark prev-btn p-2 px-4"
         >
           Go Back
@@ -127,9 +126,6 @@ function App() {
       {step < 4 && (
         <Link
           to={paths[step+1]}
-          // onClick={() => {
-          //   setStep(step + 1);
-          // }}
           className="btn btn-rounded btn-dark next-btn p-2 px-4"
         >
           {step === 3 ? "Confirm" : "Next Step"}
