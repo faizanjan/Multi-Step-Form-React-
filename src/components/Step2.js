@@ -1,8 +1,13 @@
 import Plan from "./subComponents/Step2_Plans";
 import plans from "../data/plans" 
+import { useEffect } from "react";
 
-let Step2 = ({monthly, switchMonthly, setPlan, activePlan}) => {
+let Step2 = ({monthly, switchMonthly, setPlan, activePlan, setStep}) => {
   
+  useEffect(()=>{
+    setStep(1);
+  },[])
+
   let classesForMonthlyAndYearly = "form-check-label mx-2 mx-sm-3 mx-lg-5";
   return (
     <form

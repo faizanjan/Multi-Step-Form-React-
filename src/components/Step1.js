@@ -1,7 +1,12 @@
 import Input from "./subComponents/Step1_Inputs";
 import inputs from "../data/inputs.js";
+import { useEffect } from "react";
 
-let Step1 = ({handlePersonalInfo}) => {
+let Step1 = ({handlePersonalInfo, setStep}) => {
+
+  useEffect(()=>{
+    setStep(0);
+  },[])
 
   return (
     <>

@@ -1,7 +1,12 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-let Step4 = ({ monthly, activePlan, addOnsList }) => {
+let Step4 = ({ monthly, activePlan, addOnsList, setStep }) => {
+  
+  useEffect(()=>{
+    setStep(3);
+  },[])
+
   let monthlyTotal = useState(
     activePlan.monthlyPrice +
       addOnsList.reduce((acc, addOn) => {

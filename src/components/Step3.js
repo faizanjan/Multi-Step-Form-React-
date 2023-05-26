@@ -1,6 +1,12 @@
 import AddOn from "./subComponents/Step3_AddOns";
+import { useEffect } from "react";
 
-let Step3 = ({monthly, modifyAddOns, addOnsList}) => {
+let Step3 = ({monthly, modifyAddOns, addOnsList, setStep}) => {
+  
+  useEffect(()=>{
+    setStep(2);
+  },[])
+  
   return (
     <form
       className="px-3 py-4 p-sm-5 mx-auto d-flex flex-column bg-light rounded-4"

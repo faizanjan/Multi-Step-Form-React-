@@ -72,7 +72,7 @@ function App() {
 
       <Routes>
         <Route
-          element={<Step1 handlePersonalInfo={handlePersonalInfo} />}
+          element={<Step1 handlePersonalInfo={handlePersonalInfo} setStep={setStep}/>}
           path="/"
         />
         <Route
@@ -82,6 +82,7 @@ function App() {
               switchMonthly={switchMonthly}
               setPlan={setPlan}
               activePlan={activePlan}
+              setStep={setStep}
             />
           }
           path="/plans"
@@ -92,6 +93,7 @@ function App() {
               monthly={monthly}
               modifyAddOns={modifyAddOns}
               addOnsList={addOnsList}
+              setStep={setStep}
             />
           }
           path="/add-ons"
@@ -102,19 +104,20 @@ function App() {
               monthly={monthly}
               activePlan={activePlan}
               addOnsList={addOnsList}
+              setStep={setStep}
             />
           }
           path="/summary"
         />
-        <Route element={<Step5 />} path="/thanks" />
+        <Route element={<Step5 />} path="/thanks" setStep={setStep}/>
       </Routes>
 
       {step > 0 && (
         <Link
-          to={paths[step - 1]}
-          onClick={() => {
-            setStep(step - 1);
-          }}
+          to={paths[step-1]}
+          // onClick={() => {
+          //   setStep(step - 1);
+          // }}
           className="btn btn-rounded btn-outline-dark prev-btn p-2 px-4"
         >
           Go Back
@@ -123,10 +126,10 @@ function App() {
 
       {step < 4 && (
         <Link
-          to={paths[step + 1]}
-          onClick={() => {
-            setStep(step + 1);
-          }}
+          to={paths[step+1]}
+          // onClick={() => {
+          //   setStep(step + 1);
+          // }}
           className="btn btn-rounded btn-dark next-btn p-2 px-4"
         >
           {step === 3 ? "Confirm" : "Next Step"}
