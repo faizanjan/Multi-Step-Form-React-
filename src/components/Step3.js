@@ -1,7 +1,7 @@
 import AddOn from "./subComponents/Step3_AddOns";
 import { useEffect } from "react";
 
-let Step3 = ({monthly, modifyAddOns, addOnsList, setStep}) => {
+let Step3 = ({isMonthly, modifyAddOns, addOnsList, setStep}) => {
   
   useEffect(()=>{
     setStep(2);
@@ -24,9 +24,9 @@ let Step3 = ({monthly, modifyAddOns, addOnsList, setStep}) => {
           addOnName={addOn.addOnName}
           addOnDetail={addOn.addOnDetail}
           monthlyPrice={addOn.monthlyPrice}
-          checked={addOn.checked}
+          isChecked={addOn.checked}
           modifyAddOns={modifyAddOns}
-          monthly={monthly}
+          isMonthly={isMonthly}
         />
       ))}
     </form>

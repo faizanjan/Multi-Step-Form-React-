@@ -1,5 +1,5 @@
 let Plan = (props) => {
-  let { serial, id, imgSrc, monthlyPrice, monthly, checked, setPlan } = props;
+  let { serial, id, imgSrc, monthlyPrice, isMonthly, isChecked, setPlan } = props;
   return (
     <>
       <input
@@ -8,7 +8,7 @@ let Plan = (props) => {
         name="plan"
         value={id}
         className="invisible"
-        defaultChecked={checked}
+        defaultChecked={isChecked}
         onClick={() => {
           setPlan(serial);
         }}
@@ -26,9 +26,9 @@ let Plan = (props) => {
             {id}
           </p>
           <p className="price text-muted">
-            ${monthly ? monthlyPrice + "/mo" : monthlyPrice * 10 + "/yr"}
+            ${isMonthly ? monthlyPrice + "/mo" : monthlyPrice * 10 + "/yr"}
           </p>
-          {!monthly && <p className="two-months-free">2 months free</p>}
+          {!isMonthly && <p className="two-months-free">2 months free</p>}
         </span>
       </label>
     </>

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-let Step4 = ({ monthly, activePlan, addOnsList, setStep }) => {
+let Step4 = ({ isMonthly, activePlan, addOnsList, setStep }) => {
   
   useEffect(()=>{
     setStep(3);
@@ -38,7 +38,7 @@ let Step4 = ({ monthly, activePlan, addOnsList, setStep }) => {
               className="fw-bold mb-2"
               style={{ textTransform: "Capitalize" }}
             >
-              {activePlan.id} ({monthly ? "Monthly" : "Yearly"})
+              {activePlan.id} ({isMonthly ? "Monthly" : "Yearly"})
             </h5>
             <Link
               to="/plans"
@@ -52,7 +52,7 @@ let Step4 = ({ monthly, activePlan, addOnsList, setStep }) => {
           </div>
           <span id="plan-price" className="fw-bold">
             $
-            {monthly
+            {isMonthly
               ? activePlan.monthlyPrice + "/mo"
               : activePlan.monthlyPrice * 10 + "/yr"}
           </span>
@@ -69,7 +69,7 @@ let Step4 = ({ monthly, activePlan, addOnsList, setStep }) => {
                   <p className="add-on-name text-muted">{addOn.addOnName}</p>
                   <p className="add-on-price">
                     +$
-                    {monthly
+                    {isMonthly
                       ? addOn.monthlyPrice + "/mo"
                       : addOn.monthlyPrice * 10 + "/yr"}
                   </p>
@@ -84,9 +84,9 @@ let Step4 = ({ monthly, activePlan, addOnsList, setStep }) => {
         id="total-container"
         className="my-4 w-100 m-auto d-flex flex-row justify-content-between px-3"
       >
-        <h5 id="total">Total ({monthly? "Monthly":"Yearly"})</h5>
+        <h5 id="total">Total ({isMonthly? "Monthly":"Yearly"})</h5>
         <h4 id="total-summary-price">
-          ${monthly ? monthlyTotal[0] + "/mo" : monthlyTotal[0] * 10 + "/yr"}
+          ${isMonthly ? monthlyTotal[0] + "/mo" : monthlyTotal[0] * 10 + "/yr"}
         </h4>
       </div>
     </form>

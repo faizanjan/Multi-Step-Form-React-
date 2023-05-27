@@ -1,5 +1,5 @@
 let AddOn = (props) => {
-  let { id, addOnName, addOnDetail, monthlyPrice, checked, modifyAddOns, monthly } =
+  let { id, addOnName, addOnDetail, monthlyPrice, isChecked, modifyAddOns, isMonthly } =
     props;
 
   return (
@@ -8,7 +8,7 @@ let AddOn = (props) => {
         className="mx-auto mx-sm-3"
         type="checkbox"
         id={id}
-        defaultChecked={checked}
+        defaultChecked={isChecked}
         onClick={(event)=>{modifyAddOns(id, event.target.checked)}}
       />
       <label
@@ -19,7 +19,7 @@ let AddOn = (props) => {
           <p className="add-ons-name my-1 fs-5">{addOnName}</p>
           <p className="text-muted">{addOnDetail}</p>
         </div>
-        <span className="add-ons-price">+${monthly? monthlyPrice+'/mo': monthlyPrice*10+'/yr'}</span>
+        <span className="add-ons-price">+${isMonthly? monthlyPrice+'/mo': monthlyPrice*10+'/yr'}</span>
       </label>
     </div>
   );

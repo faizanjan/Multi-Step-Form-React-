@@ -2,7 +2,7 @@ import { useState } from "react";
 
 let Input = ({id, type, value, placeholder, labelName, handlePersonalInfo})=>{
     
-    let [firstFocus, setFirstFocus] = useState(false);
+    let [firstFocused, setFirstFocus] = useState(false);
     let classesForInput = "p-2 w-75 border rounded-2";
 
     return <>
@@ -14,12 +14,12 @@ let Input = ({id, type, value, placeholder, labelName, handlePersonalInfo})=>{
           <span>{labelName}</span>
           <span 
             className="field-required text-danger"
-            style={{display: `${(firstFocus && !value)? "inline": "none"}`}}
+            style={{display: `${(firstFocused && !value)? "inline": "none"}`}}
             >
               This field is required</span>
         </label>
         <input
-          className= {(firstFocus && !value)? classesForInput + " border-danger": classesForInput}
+          className= {(firstFocused && !value)? classesForInput + " border-danger": classesForInput}
           type={type}
           id={id}
           placeholder={placeholder}

@@ -17,8 +17,8 @@ function App() {
   let lastPersonalInfo = JSON.parse(sessionStorage.getItem("personalInfo"));
   let [personalInfo, setPersonalInfo] = useState(lastPersonalInfo || null);
 
-  let lastMonthly = JSON.parse(sessionStorage.getItem("monthly"));
-  let [monthly, switchMonthly] = useState(
+  let lastMonthly = JSON.parse(sessionStorage.getItem("isMonthly"));
+  let [isMonthly, switchMonthly] = useState(
     lastMonthly === null ? true : lastMonthly
   );
 
@@ -36,10 +36,10 @@ function App() {
   useEffect(() => {
     sessionStorage.setItem("personalInfo", JSON.stringify(personalInfo));
     sessionStorage.setItem("step", JSON.stringify(step));
-    sessionStorage.setItem("monthly", JSON.stringify(monthly));
+    sessionStorage.setItem("isMonthly", JSON.stringify(isMonthly));
     sessionStorage.setItem("activePlan", JSON.stringify(activePlan));
     sessionStorage.setItem("addOnsList", JSON.stringify(addOnsList));
-  }, [monthly, step, activePlan, addOnsList, personalInfo]);
+  }, [isMonthly, step, activePlan, addOnsList, personalInfo]);
 
   let handlePersonalInfo = (key, value) => {
     setPersonalInfo({
@@ -82,7 +82,7 @@ function App() {
         <Route
           element={
             <Step2
-              monthly={monthly}
+              isMonthly={isMonthly}
               switchMonthly={switchMonthly}
               setPlan={setPlan}
               activePlan={activePlan}
@@ -94,7 +94,7 @@ function App() {
         <Route
           element={
             <Step3
-              monthly={monthly}
+              isMonthly={isMonthly}
               modifyAddOns={modifyAddOns}
               addOnsList={addOnsList}
               setStep={setStep}
@@ -105,7 +105,7 @@ function App() {
         <Route
           element={
             <Step4
-              monthly={monthly}
+              isMonthly={isMonthly}
               activePlan={activePlan}
               addOnsList={addOnsList}
               setStep={setStep}
