@@ -8,14 +8,16 @@ import Step5 from "./components/Step5";
 import plans from "./data/plans.js";
 import addOns from "./data/addOns.js";
 
+import validateFirstStep from "./modules/validation";
+
 import { useState, useEffect } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 
 function App() {
   let paths = ["/", "/plans", "/add-ons", "/summary", "/thanks"];
 
-  let lastPersonalInfo = JSON.parse(sessionStorage.getItem("personalInfo"));
-  let [personalInfo, setPersonalInfo] = useState(lastPersonalInfo || null);
+  // STATE MANAGEMENT
+  let [personalInfo, setPersonalInfo] = useState(JSON.parse(sessionStorage.getItem("personalInfo")));
 
   let lastMonthly = JSON.parse(sessionStorage.getItem("isMonthly"));
   let [isMonthly, switchMonthly] = useState(
@@ -30,15 +32,22 @@ function App() {
     JSON.parse(sessionStorage.getItem("addOnsList")) || addOns;
   let [addOnsList, setAddOnsList] = useState(lastAddOnsList);
 
-  const lastStep = parseInt(sessionStorage.getItem("step")) || 0;
+  let lastStep = parseInt(sessionStorage.getItem("step")) || 0;
   let [step, setStep] = useState(lastStep);
 
+  let [validity, setValidity] = useState(
+    step===0? validateFirstStep(personalInfo): [true,null]
+  )
+
+  // COMPONENT DID UPDATE 
   useEffect(() => {
     sessionStorage.setItem("personalInfo", JSON.stringify(personalInfo));
     sessionStorage.setItem("step", JSON.stringify(step));
     sessionStorage.setItem("isMonthly", JSON.stringify(isMonthly));
     sessionStorage.setItem("activePlan", JSON.stringify(activePlan));
     sessionStorage.setItem("addOnsList", JSON.stringify(addOnsList));
+    setValidity(validateFirstStep(personalInfo));
+    console.log(validity[1])
   }, [isMonthly, step, activePlan, addOnsList, personalInfo]);
 
   let handlePersonalInfo = (key, value) => {
@@ -64,6 +73,7 @@ function App() {
     setAddOnsList(newList);
   };
 
+  // JSX
   return (
     <div className="App my-container d-flex flex-column flex-lg-row bg-light border border-light rounded-3 h-75 p-lg-3">
       <Aside step={step} />
@@ -75,6 +85,7 @@ function App() {
               personalInfo={personalInfo}
               handlePersonalInfo={handlePersonalInfo}
               setStep={setStep}
+              prompts={validity[1]}
             />
           }
           path="/"
@@ -128,7 +139,7 @@ function App() {
 
       {step < 4 && (
         <Link
-          to={paths[step+1]}
+          to={validity[0]? paths[step+1]: paths[step]}
           className="btn btn-rounded btn-dark next-btn p-2 px-4"
         >
           {step === 3 ? "Confirm" : "Next Step"}

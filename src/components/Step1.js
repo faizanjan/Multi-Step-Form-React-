@@ -2,7 +2,7 @@ import Input from "./subComponents/Step1_Inputs";
 import inputs from "../data/inputs.js";
 import { useEffect } from "react";
 
-let Step1 = ({personalInfo, handlePersonalInfo, setStep}) => {
+let Step1 = ({personalInfo, handlePersonalInfo, setStep, prompts}) => {
 
   useEffect(()=>{
     setStep(0);
@@ -28,6 +28,7 @@ let Step1 = ({personalInfo, handlePersonalInfo, setStep}) => {
             placeholder={element.placeholder}
             labelName={element.labelName}
             handlePersonalInfo={handlePersonalInfo}
+            prompt={prompts? (prompts[element.id]? prompts[element.id]: null ): null}
           />
         ))}
       </form>
