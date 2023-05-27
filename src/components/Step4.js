@@ -59,11 +59,11 @@ let Step4 = ({ monthly, activePlan, addOnsList, setStep }) => {
         </div>
         <hr />
         <div id="add-ons-summary" className="mt-3">
-          {addOnsList.map((addOn, key) => {
+          {addOnsList.map((addOn) => {
             if (addOn.checked) {
               return (
                 <div
-                  key={key}
+                  key={addOn.id}
                   className="add-on-sum d-flex flex-row justify-content-between align-items-center pe-3 mt-2 mb-3 "
                 >
                   <p className="add-on-name text-muted">{addOn.addOnName}</p>

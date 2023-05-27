@@ -19,9 +19,9 @@ let Step1 = ({personalInfo, handlePersonalInfo, setStep}) => {
           Please provide your name, email address, and phone number
         </p>
 
-        {inputs.map((element, index) => (
+        {inputs.map((element) => (
           <Input
-            key={index}
+            key={element.id}
             id={element.id}
             value={personalInfo? personalInfo[element.id]:""}
             type={element.type}

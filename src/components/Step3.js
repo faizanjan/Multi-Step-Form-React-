@@ -17,9 +17,9 @@ let Step3 = ({monthly, modifyAddOns, addOnsList, setStep}) => {
         Add-ons help enhance your gaming experience
       </p>
 
-      {addOnsList.map((addOn, index) => (
+      {addOnsList.map((addOn) => (
         <AddOn
-          key={index}
+          key={addOn.id}
           id={addOn.id}
           addOnName={addOn.addOnName}
           addOnDetail={addOn.addOnDetail}

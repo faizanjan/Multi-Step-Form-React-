@@ -23,9 +23,9 @@ let Step2 = ({monthly, switchMonthly, setPlan, activePlan, setStep}) => {
         id="plans-options"
         className="d-flex flex-column flex-lg-row justify-content-between"
       >
-        {plans.map((plan, index) => (
+        {plans.map((plan) => (
           <Plan
-            key={index}
+            key={plan.id}
             serial={index}
             id={plan.id}
             imgSrc={plan.img}
