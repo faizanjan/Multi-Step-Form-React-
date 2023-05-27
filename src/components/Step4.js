@@ -85,7 +85,7 @@ let Step4 = ({ isMonthly, activePlan, addOnsList, setStep }) => {
         className="my-4 w-100 m-auto d-flex flex-row justify-content-between px-3"
       >
         <h5 id="total">Total ({isMonthly? "Monthly":"Yearly"})</h5>
-        <h4 id="total-summary-price">
+        <h4 id="total-summary-price" className="text-primary">
           ${isMonthly ? monthlyTotal[0] + "/mo" : monthlyTotal[0] * 10 + "/yr"}
         </h4>
       </div>
