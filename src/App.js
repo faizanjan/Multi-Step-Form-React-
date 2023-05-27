@@ -47,7 +47,6 @@ function App() {
     sessionStorage.setItem("activePlan", JSON.stringify(activePlan));
     sessionStorage.setItem("addOnsList", JSON.stringify(addOnsList));
     setValidity(validateFirstStep(personalInfo));
-    console.log(validity[1])
   }, [isMonthly, step, activePlan, addOnsList, personalInfo]);
 
   let handlePersonalInfo = (key, value) => {
